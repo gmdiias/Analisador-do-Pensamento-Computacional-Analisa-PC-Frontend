@@ -1,25 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
-import { ClienteListComponent } from './cliente/cliente-list/cliente-list.component';
-import { ClienteEditComponent } from './cliente/cliente-edit/cliente-edit.component';
-import { PaisListComponent } from './pais/pais-list/pais-list.component';
-import { PaisEditComponent } from './pais/pais-edit/pais-edit.component';
-import { EstadoListComponent } from './estado/estado-list/estado-list.component';
-import { EstadoEditComponent } from './estado/estado-edit/estado-edit.component';
-import { RelatorioListComponent } from './relatorio/relatorio-list.component';
+import { LinguagemListComponent } from './linguagem/linguagem-list/linguagem-list.component';
+import { LinguagemEditComponent } from './linguagem/linguagem-edit/linguagem-edit.component';
+import { CasoTesteListComponent } from './caso-teste/caso-teste-list/caso-teste-list.component';
+import { CasoTesteEditComponent } from './caso-teste/caso-teste-edit/caso-teste-edit.component';
 
 const routes: Routes = [
-  { path: 'pais/list', component: PaisListComponent },
+  { path: 'pais/list', component: LinguagemListComponent },
   { path: 'pais/edit', redirectTo: 'pais/edit/new', pathMatch: 'full' },
-  { path: 'pais/edit/:id', component: PaisEditComponent },
-  { path: 'cliente/list', component: ClienteListComponent },
-  { path: 'cliente/edit', redirectTo: 'cliente/edit/new', pathMatch: 'full' },
-  { path: 'cliente/edit/:id', component: ClienteEditComponent },
-  { path: 'estado/list', component: EstadoListComponent },
+  { path: 'pais/edit/:id', component: LinguagemEditComponent },
+  { path: 'estado/list', component: CasoTesteListComponent },
   { path: 'estado/edit', redirectTo: 'estado/edit/new', pathMatch: 'full' },
-  { path: 'estado/edit/:id', component: EstadoEditComponent },
-  { path: 'relatorio/list', component: RelatorioListComponent },
+  { path: 'estado/edit/:id', component: CasoTesteEditComponent },
   { path: '', component: AppDashboardComponent }
 ];
 

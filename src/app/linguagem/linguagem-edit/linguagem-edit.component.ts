@@ -4,22 +4,23 @@ import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { Pais } from '../pais.model';
-import { PaisService } from '../pais.service';
+
+import { Linguagem } from '../linguagem.model';
+import { LinguagemService } from '../linguagem.service';
 
 @Component({
-  selector: 'app-pais-edit',
-  templateUrl: './pais-edit.component.html',
-  styleUrls: ['./pais-edit.component.css']
+  selector: 'app-linguagem-edit',
+  templateUrl: './linguagem-edit.component.html',
+  styleUrls: ['./linguagem-edit.component.css']
 })
-export class PaisEditComponent implements OnInit {
-  entity: Pais;
+export class LinguagemEditComponent implements OnInit {
+  entity: Linguagem;
   entityForm: FormGroup;
   isNew = true;
 
-  constructor(private router: Router, fb: FormBuilder, private paisService: PaisService,
+  constructor(private router: Router, fb: FormBuilder, private paisService: LinguagemService,
     private snackBar: MatSnackBar, protected activatedRoute: ActivatedRoute) {
-    this.entityForm = fb.group(new Pais());
+    this.entityForm = fb.group(new Linguagem());
   }
 
   private paramSub: Subscription;
@@ -31,14 +32,14 @@ export class PaisEditComponent implements OnInit {
       .pipe(switchMap(
         p => this.paisService.findById(Number(p.id)),
       ))
-      .subscribe((e: Pais) => {
+      .subscribe((e: Linguagem) => {
         this.updateEntity(e);
       });
   }
 
-  updateEntity(newEntity?: Pais): void {
+  updateEntity(newEntity?: Linguagem): void {
     this.isNew = this.checkIsNew(newEntity.id);
-    this.entity = newEntity || new Pais();
+    this.entity = newEntity || new Linguagem();
     this.entityForm.patchValue(this.entity);
   }
 

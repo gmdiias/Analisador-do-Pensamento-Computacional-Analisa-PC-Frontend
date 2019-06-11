@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatPaginatorModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
-import { PaisListComponent } from './pais-list/pais-list.component';
-import { PaisEditComponent } from './pais-edit/pais-edit.component';
+import { LinguagemListComponent } from './linguagem-list/linguagem-list.component';
+import { LinguagemEditComponent } from './linguagem-edit/linguagem-edit.component';
 
 @NgModule({
   declarations: [
-    PaisListComponent,
-    PaisEditComponent
+    LinguagemListComponent,
+    LinguagemEditComponent
   ],
   imports: [
     CommonModule,
@@ -23,8 +23,8 @@ import { PaisEditComponent } from './pais-edit/pais-edit.component';
     ReactiveFormsModule
   ],
   exports: [
-    PaisListComponent,
-    PaisEditComponent
+    LinguagemListComponent,
+    LinguagemEditComponent
   ],
 })
-export class PaisModule { }
+export class LinguagemModule { }

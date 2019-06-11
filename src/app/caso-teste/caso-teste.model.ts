@@ -1,5 +1,4 @@
-import { Linguagem } from '../pais/linguagem.model';
-
+import { Linguagem } from '../linguagem/linguagem.model';
 
 export class CasoTeste {
   id = -1;

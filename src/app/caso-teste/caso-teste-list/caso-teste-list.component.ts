@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
-import { EstadoService } from '../estado.service';
+import { CasoTesteService } from '../caso-teste.service';
 
 @Component({
-  selector: 'app-estado-list',
-  templateUrl: './estado-list.component.html',
-  styleUrls: ['./estado-list.component.css']
+  selector: 'app-caso-teste-list',
+  templateUrl: './caso-teste-list.component.html',
+  styleUrls: ['./caso-teste-list.component.css']
 })
-export class EstadoListComponent implements OnInit {
+export class CasoTesteListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'uf', 'pais', 'options'];
   dataSource = new MatTableDataSource();
 
-  constructor(private estadoService: EstadoService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private estadoService: CasoTesteService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.refreshList();

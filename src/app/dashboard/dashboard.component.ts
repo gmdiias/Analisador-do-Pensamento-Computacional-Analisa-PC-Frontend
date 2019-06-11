@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ClienteService } from '../cliente/cliente.service';
-import { EstadoService } from '../estado/estado.service';
-import { PaisService } from '../pais/pais.service';
+import { CasoTesteService } from '../caso-teste/caso-teste.service';
+import { LinguagemService } from '../linguagem/linguagem.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +9,13 @@ import { PaisService } from '../pais/pais.service';
 })
 export class AppDashboardComponent implements OnInit {
 
-  constructor(private clienteService: ClienteService, private estadoService: EstadoService, private paisService: PaisService) { }
+  constructor(private estadoService: CasoTesteService, private paisService: LinguagemService) { }
 
   countCliente = 0;
   countEstado = 0;
   countPais = 0;
 
   ngOnInit() {
-    this.clienteService.count().subscribe(dado => this.countCliente = dado);
     this.estadoService.count().subscribe(dado => this.countEstado = dado);
     this.paisService.count().subscribe(dado => this.countPais = dado);
   }

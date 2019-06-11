@@ -6,15 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { AppNavbarComponent } from './navbar/navbar.component';
-import { ClienteModule } from './cliente/cliente.module';
-import { ClienteService } from './cliente/cliente.service';
-import { PaisModule } from './pais/pais.module';
-import { PaisService } from './pais/pais.service';
-import { EstadoModule } from './estado/estado.module';
-import { EstadoService } from './estado/estado.service';
-import { RelatorioModule } from './relatorio/relatorio.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MatIconModule } from '@angular/material';
+import { LinguagemModule } from './linguagem/linguagem.module';
+import { CasoTesteModule } from './caso-teste/caso-teste.module';
+import { LinguagemService } from './linguagem/linguagem.service';
+import { CasoTesteService } from './caso-teste/caso-teste.service';
 
 
 @NgModule({
@@ -27,14 +24,12 @@ import { MatIconModule } from '@angular/material';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    PaisModule,
-    ClienteModule,
+    LinguagemModule,
     MatIconModule,
-    EstadoModule,
-    RelatorioModule,
+    CasoTesteModule,
     DashboardModule
   ],
-  providers: [PaisService, ClienteService, EstadoService],
+  providers: [LinguagemService, CasoTesteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,13 +9,14 @@ import { MatSnackBar } from "@angular/material";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription, Observable, of } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { Estado } from "../estado.model";
-import { EstadoService } from "../estado.service";
-import { Pais } from "src/app/pais/pais.model";
-import { PaisService } from "src/app/pais/pais.service";
+import { CasoTeste } from '../caso-teste.model';
+import { CasoTesteService } from '../caso-teste.service';
+import { LinguagemService } from 'src/app/linguagem/linguagem.service';
+import { Linguagem } from 'src/app/linguagem/linguagem.model';
+
 
 export function paisValidator(c: AbstractControl): ValidationErrors | null {
-  const pais: Pais = c.value;
+  const pais: Linguagem = c.value;
 
   if (pais && pais.id && pais.id !== -1) {
     return null;
@@ -24,27 +25,27 @@ export function paisValidator(c: AbstractControl): ValidationErrors | null {
 }
 
 @Component({
-  selector: "app-estado-edit",
-  templateUrl: "./estado-edit.component.html",
-  styleUrls: ["./estado-edit.component.css"]
+  selector: "app-caso-teste-edit",
+  templateUrl: "./caso-teste-edit.component.html",
+  styleUrls: ["./caso-teste-edit.component.css"]
 })
-export class EstadoEditComponent implements OnInit {
-  entity: Estado;
+export class CasoTesteEditComponent implements OnInit {
+  entity: CasoTeste;
   entityForm: FormGroup;
   isNew = true;
 
   constructor(
     private router: Router,
     fb: FormBuilder,
-    private estadoService: EstadoService,
+    private estadoService: CasoTesteService,
     private snackBar: MatSnackBar,
     protected activatedRoute: ActivatedRoute,
-    private paisService: PaisService
+    private paisService: LinguagemService
   ) {
-    this.entityForm = fb.group(new Estado());
+    this.entityForm = fb.group(new CasoTeste());
   }
 
-  paises: Observable<Pais[]> = of([]);
+  paises: Observable<Linguagem[]> = of([]);
 
   private paramSub: Subscription;
   ngOnInit() {
@@ -53,7 +54,7 @@ export class EstadoEditComponent implements OnInit {
     }
     this.paramSub = this.activatedRoute.params
       .pipe(switchMap(p => this.estadoService.findById(Number(p.id))))
-      .subscribe((e: Estado) => {
+      .subscribe((e: CasoTeste) => {
         this.updateEntity(e);
       });
 
@@ -61,9 +62,9 @@ export class EstadoEditComponent implements OnInit {
     paisControl.setValidators(paisValidator);
   }
 
-  updateEntity(newEntity?: Estado): void {
+  updateEntity(newEntity?: CasoTeste): void {
     this.isNew = this.checkIsNew(newEntity.id);
-    this.entity = newEntity || new Estado();
+    this.entity = newEntity || new CasoTeste();
     this.entityForm.patchValue(this.entity);
   }
 
@@ -103,14 +104,14 @@ export class EstadoEditComponent implements OnInit {
     this.paises = this._filter(valor);
   }
 
-  private _filter(value: string): Observable<Pais[]> {
+  private _filter(value: string): Observable<CasoTeste[]> {
     if (value && value.length < 18) {
       return this.paisService.autocomplete(value);
     }
     return this.paises;
   }
 
-  formatFornecedorName(fornecedor: Pais): string {
+  formatFornecedorName(fornecedor: CasoTeste): string {
     return fornecedor.nome;
   }
 }

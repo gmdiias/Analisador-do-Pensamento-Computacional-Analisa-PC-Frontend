@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
-import { PaisService } from '../pais.service';
 import { tap } from 'rxjs/operators';
+import { LinguagemService } from '../linguagem.service';
 
 @Component({
-  selector: 'app-pais-list',
-  templateUrl: './pais-list.component.html',
-  styleUrls: ['./pais-list.component.css']
+  selector: 'app-linguagem-list',
+  templateUrl: './linguagem-list.component.html',
+  styleUrls: ['./linguagem-list.component.css']
 })
-export class PaisListComponent implements OnInit {
+export class LinguagemListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'options'];
   dataSource = new MatTableDataSource();
 
-  constructor(private paisService: PaisService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private paisService: LinguagemService, private router: Router, private snackBar: MatSnackBar) {
     paisService.search().pipe(
       tap(console.log)
     ).subscribe(value => value);
