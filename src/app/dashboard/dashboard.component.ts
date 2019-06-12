@@ -11,13 +11,12 @@ export class AppDashboardComponent implements OnInit {
 
   constructor(private estadoService: CasoTesteService, private paisService: LinguagemService) { }
 
-  countCliente = 0;
-  countEstado = 0;
-  countPais = 0;
+  countTestes = 0;
+  countLinguagens = 0;
 
   ngOnInit() {
-    this.estadoService.count().subscribe(dado => this.countEstado = dado);
-    this.paisService.count().subscribe(dado => this.countPais = dado);
+    this.estadoService.count().subscribe(dado => this.countTestes = dado);
+    this.paisService.count().subscribe(dado => this.countLinguagens = dado);
   }
 
 }

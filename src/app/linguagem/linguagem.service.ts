@@ -11,7 +11,7 @@ export class LinguagemService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:8080/linguagem/pais/');
+    return this.http.get('http://localhost:8080/api/linguagem');
   }
 
   search(): Observable<any> {

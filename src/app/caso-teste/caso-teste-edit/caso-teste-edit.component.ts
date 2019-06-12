@@ -45,7 +45,7 @@ export class CasoTesteEditComponent implements OnInit {
     this.entityForm = fb.group(new CasoTeste());
   }
 
-  paises: Observable<Linguagem[]> = of([]);
+  linguagens: Observable<Linguagem[]> = of([]);
 
   private paramSub: Subscription;
   ngOnInit() {
@@ -58,7 +58,7 @@ export class CasoTesteEditComponent implements OnInit {
         this.updateEntity(e);
       });
 
-    const paisControl = this.entityForm.get('pais');
+    const paisControl = this.entityForm.get('linguagem');
     paisControl.setValidators(paisValidator);
   }
 
@@ -101,17 +101,17 @@ export class CasoTesteEditComponent implements OnInit {
   }
 
   onChange(valor: any) {
-    this.paises = this._filter(valor);
+    this.linguagens = this._filter(valor);
   }
 
-  private _filter(value: string): Observable<CasoTeste[]> {
+  private _filter(value: string): Observable<Linguagem[]> {
     if (value && value.length < 18) {
       return this.paisService.autocomplete(value);
     }
-    return this.paises;
+    return this.linguagens;
   }
 
-  formatFornecedorName(fornecedor: CasoTeste): string {
+  formatFornecedorName(fornecedor: Linguagem): string {
     return fornecedor.nome;
   }
 }

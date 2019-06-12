@@ -10,19 +10,19 @@ export class CasoTesteService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:8080/api/estado/');
+    return this.http.get('http://localhost:8080/api/casoteste/');
   }
 
   findById(id: number): Observable<CasoTeste> {
     if (!Number.isInteger(id) || id < 0) {
       return of(new CasoTeste());
     }
-    return this.http.get<CasoTeste>('http://localhost:8080/api/estado/' + `${id}`);
+    return this.http.get<CasoTeste>('http://localhost:8080/api/casoteste/' + `${id}`);
   }
 
   deleteById(id: number): Promise<CasoTeste> {
     return this.http
-    .delete('http://localhost:8080/api/estado/' + `${id}`)
+    .delete('http://localhost:8080/api/casoteste/' + `${id}`)
     .toPromise()
     .then(e => <CasoTeste>e);
   }
@@ -33,14 +33,14 @@ export class CasoTesteService {
     delete copy.version;
 
     return this.http
-      .post('http://localhost:8080/api/estado/', copy)
+      .post('http://localhost:8080/api/casoteste/', copy)
       .toPromise()
       .then(value => <CasoTeste>value);
   }
 
   save(entity: CasoTeste): Promise<CasoTeste> {
     return this.http
-      .put('http://localhost:8080/api/estado/', entity)
+      .put('http://localhost:8080/api/casoteste/', entity)
       .toPromise()
       .then(value => <CasoTeste>value);
   }
@@ -54,11 +54,11 @@ export class CasoTesteService {
 
   autocomplete(search: string) {
     return this.http.get<CasoTeste[]>(
-      'http://localhost:8080/api/estado/autocomplete/' + search,
+      'http://localhost:8080/api/casoteste/autocomplete/' + search,
     );
   }
 
   count(): Observable<number> {
-    return this.http.get<number>('http://localhost:8080/api/estado/count');
+    return this.http.get<number>('http://localhost:8080/api/casoteste/count');
   }
 }
