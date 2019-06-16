@@ -9,10 +9,10 @@ import { CasoTesteService } from '../caso-teste.service';
   styleUrls: ['./caso-teste-list.component.css']
 })
 export class CasoTesteListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nome', 'uf', 'pais', 'options'];
+  displayedColumns: string[] = ['id', 'nome', 'uf', 'linguagem', 'options'];
   dataSource = new MatTableDataSource();
 
-  constructor(private estadoService: CasoTesteService, private router: Router, private snackBar: MatSnackBar) { }
+  constructor(private casoTesteService: CasoTesteService, private router: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.refreshList();
@@ -22,7 +22,7 @@ export class CasoTesteListComponent implements OnInit {
     if (filtro) {
       console.log(filtro);
     }
-    this.estadoService.getAll().subscribe(data => {
+    this.casoTesteService.getAll().subscribe(data => {
       this.dataSource = data;
     });
   }
@@ -32,7 +32,7 @@ export class CasoTesteListComponent implements OnInit {
   }
 
   onAddClick() {
-    this.router.navigate(['estado/edit']);
+    this.router.navigate(['casoteste/edit']);
   }
 
   onVoltarClick() {
@@ -40,15 +40,15 @@ export class CasoTesteListComponent implements OnInit {
   }
 
   onEditClick(id: number) {
-    this.router.navigate(['estado/edit/', id]);
+    this.router.navigate(['casoteste/edit/', id]);
   }
 
   onDeleteClick(id: number) {
-    this.estadoService.deleteById(id).then(_ => {
-      this.openSnackBar('Estado deletado com sucesso!', 'Ok');
+    this.casoTesteService.deleteById(id).then(_ => {
+      this.openSnackBar('Caso de Teste deletado com sucesso!', 'Ok');
       this.refreshList();
     },
-    ).catch(_ => this.openSnackBar('Ocorreu um erro ao remover o Estado!', 'Erro'));
+    ).catch(_ => this.openSnackBar('Ocorreu um erro ao remover o Caso de teste!', 'Erro'));
   }
 
   openSnackBar(mensagem: string, acao: string) {

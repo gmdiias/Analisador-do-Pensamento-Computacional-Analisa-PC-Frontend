@@ -18,7 +18,7 @@ export class LinguagemEditComponent implements OnInit {
   entityForm: FormGroup;
   isNew = true;
 
-  constructor(private router: Router, fb: FormBuilder, private paisService: LinguagemService,
+  constructor(private router: Router, fb: FormBuilder, private linguagemService: LinguagemService,
     private snackBar: MatSnackBar, protected activatedRoute: ActivatedRoute) {
     this.entityForm = fb.group(new Linguagem());
   }
@@ -30,7 +30,7 @@ export class LinguagemEditComponent implements OnInit {
     }
     this.paramSub = this.activatedRoute.params
       .pipe(switchMap(
-        p => this.paisService.findById(Number(p.id)),
+        p => this.linguagemService.findById(Number(p.id)),
       ))
       .subscribe((e: Linguagem) => {
         this.updateEntity(e);
@@ -51,15 +51,15 @@ export class LinguagemEditComponent implements OnInit {
   }
 
   onVoltarClick() {
-    this.router.navigate(['pais/list']);
+    this.router.navigate(['linguagem/list']);
   }
 
   onSubmit() {
     this.entityForm.disable();
 
-    this.paisService.saveOrCreate(this.isNew, this.entityForm.value).then(_ => {
+    this.linguagemService.saveOrCreate(this.isNew, this.entityForm.value).then(_ => {
       this.openSnackBar('País salvo com sucesso!', 'Ok');
-      this.router.navigate(['pais/list']);
+      this.router.navigate(['linguagem/list']);
     }).catch(_ => {
       this.openSnackBar('Ocorreu um erro ao salvar o País!', 'Erro');
       this.entityForm.enable();

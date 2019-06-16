@@ -13,8 +13,8 @@ export class LinguagemListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'nome', 'options'];
   dataSource = new MatTableDataSource();
 
-  constructor(private paisService: LinguagemService, private router: Router, private snackBar: MatSnackBar) {
-    paisService.search().pipe(
+  constructor(private linguagemService: LinguagemService, private router: Router, private snackBar: MatSnackBar) {
+    linguagemService.search().pipe(
       tap(console.log)
     ).subscribe(value => value);
   }
@@ -27,7 +27,7 @@ export class LinguagemListComponent implements OnInit {
     if (filtro) {
       console.log(filtro);
     }
-    this.paisService.getAll().subscribe(data => {
+    this.linguagemService.getAll().subscribe(data => {
       this.dataSource = data;
     });
   }
@@ -37,7 +37,7 @@ export class LinguagemListComponent implements OnInit {
   }
 
   onAddClick() {
-    this.router.navigate(['pais/edit']);
+    this.router.navigate(['linguagem/edit']);
   }
 
   onVoltarClick() {
@@ -45,15 +45,15 @@ export class LinguagemListComponent implements OnInit {
   }
 
   onEditClick(id: number) {
-    this.router.navigate(['pais/edit/', id]);
+    this.router.navigate(['linguagem/edit/', id]);
   }
 
   onDeleteClick(id: number) {
-    this.paisService.deleteById(id).then(_ => {
-      this.openSnackBar('Pais deletado com sucesso!', 'Ok');
+    this.linguagemService.deleteById(id).then(_ => {
+      this.openSnackBar('Linguagem deletada com sucesso!', 'Ok');
       this.refreshList();
     },
-    ).catch(_ => this.openSnackBar('Ocorreu um erro ao remover o Pais!', 'Erro'));
+    ).catch(_ => this.openSnackBar('Ocorreu um erro ao remover a Linguagem!', 'Erro'));
   }
 
   openSnackBar(mensagem: string, acao: string) {

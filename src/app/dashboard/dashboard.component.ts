@@ -9,14 +9,14 @@ import { LinguagemService } from '../linguagem/linguagem.service';
 })
 export class AppDashboardComponent implements OnInit {
 
-  constructor(private estadoService: CasoTesteService, private paisService: LinguagemService) { }
+  constructor(private casoTesteService: CasoTesteService, private linguagemService: LinguagemService) { }
 
   countTestes = 0;
   countLinguagens = 0;
 
   ngOnInit() {
-    this.estadoService.count().subscribe(dado => this.countTestes = dado);
-    this.paisService.count().subscribe(dado => this.countLinguagens = dado);
+    this.casoTesteService.count().subscribe(dado => this.countTestes = dado);
+    this.linguagemService.count().subscribe(dado => this.countLinguagens = dado);
   }
 
 }

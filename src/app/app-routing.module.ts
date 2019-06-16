@@ -7,12 +7,12 @@ import { CasoTesteListComponent } from './caso-teste/caso-teste-list/caso-teste-
 import { CasoTesteEditComponent } from './caso-teste/caso-teste-edit/caso-teste-edit.component';
 
 const routes: Routes = [
-  { path: 'pais/list', component: LinguagemListComponent },
-  { path: 'pais/edit', redirectTo: 'pais/edit/new', pathMatch: 'full' },
-  { path: 'pais/edit/:id', component: LinguagemEditComponent },
-  { path: 'estado/list', component: CasoTesteListComponent },
-  { path: 'estado/edit', redirectTo: 'estado/edit/new', pathMatch: 'full' },
-  { path: 'estado/edit/:id', component: CasoTesteEditComponent },
+  { path: 'linguagem/list', component: LinguagemListComponent },
+  { path: 'linguagem/edit', redirectTo: 'linguagem/edit/new', pathMatch: 'full' },
+  { path: 'linguagem/edit/:id', component: LinguagemEditComponent },
+  { path: 'casoteste/list', component: CasoTesteListComponent },
+  { path: 'casoteste/edit', redirectTo: 'casoteste/edit/new', pathMatch: 'full' },
+  { path: 'casoteste/edit/:id', component: CasoTesteEditComponent },
   { path: '', component: AppDashboardComponent }
 ];
 

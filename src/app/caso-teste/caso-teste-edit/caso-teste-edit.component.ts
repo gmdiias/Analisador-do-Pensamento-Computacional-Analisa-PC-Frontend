@@ -15,13 +15,13 @@ import { LinguagemService } from 'src/app/linguagem/linguagem.service';
 import { Linguagem } from 'src/app/linguagem/linguagem.model';
 
 
-export function paisValidator(c: AbstractControl): ValidationErrors | null {
-  const pais: Linguagem = c.value;
+export function linguagemValidator(c: AbstractControl): ValidationErrors | null {
+  const linguagem: Linguagem = c.value;
 
-  if (pais && pais.id && pais.id !== -1) {
+  if (linguagem && linguagem.id && linguagem.id !== -1) {
     return null;
   }
-  return { paisInvalido: "Pais Inválido" };
+  return { linguagemInvalida: "Linguagem Inválido" };
 }
 
 @Component({
@@ -37,10 +37,10 @@ export class CasoTesteEditComponent implements OnInit {
   constructor(
     private router: Router,
     fb: FormBuilder,
-    private estadoService: CasoTesteService,
+    private casoTesteService: CasoTesteService,
     private snackBar: MatSnackBar,
     protected activatedRoute: ActivatedRoute,
-    private paisService: LinguagemService
+    private linguagemService: LinguagemService
   ) {
     this.entityForm = fb.group(new CasoTeste());
   }
@@ -53,13 +53,13 @@ export class CasoTesteEditComponent implements OnInit {
       this.paramSub.unsubscribe();
     }
     this.paramSub = this.activatedRoute.params
-      .pipe(switchMap(p => this.estadoService.findById(Number(p.id))))
+      .pipe(switchMap(p => this.casoTesteService.findById(Number(p.id))))
       .subscribe((e: CasoTeste) => {
         this.updateEntity(e);
       });
 
-    const paisControl = this.entityForm.get('linguagem');
-    paisControl.setValidators(paisValidator);
+    const linguagemControl = this.entityForm.get('linguagem');
+    linguagemControl.setValidators(linguagemValidator);
   }
 
   updateEntity(newEntity?: CasoTeste): void {
@@ -76,20 +76,20 @@ export class CasoTesteEditComponent implements OnInit {
   }
 
   onVoltarClick() {
-    this.router.navigate(["estado/list"]);
+    this.router.navigate(["casoteste/list"]);
   }
 
   onSubmit() {
     this.entityForm.disable();
 
-    this.estadoService
+    this.casoTesteService
       .saveOrCreate(this.isNew, this.entityForm.value)
       .then(_ => {
-        this.openSnackBar("Estado salvo com sucesso!", "Ok");
-        this.router.navigate(["estado/list"]);
+        this.openSnackBar("Caso de Teste salvo com sucesso!", "Ok");
+        this.router.navigate(["casoteste/list"]);
       })
       .catch(_ => {
-        this.openSnackBar("Ocorreu um erro ao salvar o Estado!", "Erro");
+        this.openSnackBar("Ocorreu um erro ao salvar o Caso de Teste!", "Erro");
         this.entityForm.enable();
       });
   }
@@ -106,7 +106,7 @@ export class CasoTesteEditComponent implements OnInit {
 
   private _filter(value: string): Observable<Linguagem[]> {
     if (value && value.length < 18) {
-      return this.paisService.autocomplete(value);
+      return this.linguagemService.autocomplete(value);
     }
     return this.linguagens;
   }
