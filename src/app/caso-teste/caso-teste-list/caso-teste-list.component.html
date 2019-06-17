@@ -25,7 +25,8 @@
   <ng-container matColumnDef="options">
     <th mat-header-cell *matHeaderCellDef> Editar / Deletar </th>
     <td mat-cell *matCellDef="let element">
-      <mat-icon (click)="onEditClick(element.id)">edit</mat-icon>
+      <mat-icon (click)="onAvaliacaoClick(element.id)">assessment</mat-icon>
+      <mat-icon (click)="onEditClick(element.id)" class="ml-3">edit</mat-icon>
       <mat-icon (click)="onDeleteClick(element.id)" class="ml-3">delete</mat-icon>
     </td>
   </ng-container>

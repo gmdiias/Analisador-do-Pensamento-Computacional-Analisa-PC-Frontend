@@ -1,4 +1,5 @@
 import { Linguagem } from '../linguagem/linguagem.model';
+import { Resultado } from './resultado.model';
 
 export class CasoTeste {
   id = -1;
@@ -6,4 +7,5 @@ export class CasoTeste {
   dataCriacao = 0;
   codigo = '';
   linguagem: Linguagem = new Linguagem();
+  avaliacao: Resultado = new Resultado();
 }

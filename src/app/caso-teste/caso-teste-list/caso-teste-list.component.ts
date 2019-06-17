@@ -43,6 +43,10 @@ export class CasoTesteListComponent implements OnInit {
     this.router.navigate(['casoteste/edit/', id]);
   }
 
+  onAvaliacaoClick(id: number) {
+    this.router.navigate(['casoteste/result/', id]);
+  }
+
   onDeleteClick(id: number) {
     this.casoTesteService.deleteById(id).then(_ => {
       this.openSnackBar('Caso de Teste deletado com sucesso!', 'Ok');

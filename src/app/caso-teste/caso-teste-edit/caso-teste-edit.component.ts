@@ -84,9 +84,9 @@ export class CasoTesteEditComponent implements OnInit {
 
     this.casoTesteService
       .saveOrCreate(this.isNew, this.entityForm.value)
-      .then(_ => {
+      .then(submit => {
         this.openSnackBar("Caso de Teste salvo com sucesso!", "Ok");
-        this.router.navigate(["casoteste/list"]);
+        this.router.navigate(["casoteste/result", submit.id]);
       })
       .catch(_ => {
         this.openSnackBar("Ocorreu um erro ao salvar o Caso de Teste!", "Erro");

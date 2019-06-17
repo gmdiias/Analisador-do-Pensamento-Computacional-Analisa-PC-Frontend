@@ -5,6 +5,7 @@ import { LinguagemListComponent } from './linguagem/linguagem-list/linguagem-lis
 import { LinguagemEditComponent } from './linguagem/linguagem-edit/linguagem-edit.component';
 import { CasoTesteListComponent } from './caso-teste/caso-teste-list/caso-teste-list.component';
 import { CasoTesteEditComponent } from './caso-teste/caso-teste-edit/caso-teste-edit.component';
+import { CasoTesteResultComponent } from './caso-teste/caso-teste-result/caso-teste-result.component';
 
 const routes: Routes = [
   { path: 'linguagem/list', component: LinguagemListComponent },
@@ -13,6 +14,8 @@ const routes: Routes = [
   { path: 'casoteste/list', component: CasoTesteListComponent },
   { path: 'casoteste/edit', redirectTo: 'casoteste/edit/new', pathMatch: 'full' },
   { path: 'casoteste/edit/:id', component: CasoTesteEditComponent },
+  { path: 'casoteste/result', redirectTo: 'casoteste/result/new', pathMatch: 'full' },
+  { path: 'casoteste/result/:id', component: CasoTesteResultComponent },
   { path: '', component: AppDashboardComponent }
 ];
 
