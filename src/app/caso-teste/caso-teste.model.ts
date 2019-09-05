@@ -6,6 +6,7 @@ export class CasoTeste {
   version = 0;
   dataCriacao = 0;
   codigo = '';
+  nome = '';
   linguagem: Linguagem = new Linguagem();
   avaliacao: Resultado = new Resultado();
 }

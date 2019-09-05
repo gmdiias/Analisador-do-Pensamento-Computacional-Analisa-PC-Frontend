@@ -9,7 +9,7 @@ import { CasoTesteService } from '../caso-teste.service';
   styleUrls: ['./caso-teste-list.component.css']
 })
 export class CasoTesteListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nome', 'uf', 'linguagem', 'options'];
+  displayedColumns: string[] = ['id', 'nome', 'linguagem', 'pontuacao', 'options'];
   dataSource = new MatTableDataSource();
 
   constructor(private casoTesteService: CasoTesteService, private router: Router, private snackBar: MatSnackBar) { }
