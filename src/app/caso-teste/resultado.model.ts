@@ -3,4 +3,7 @@ export class Resultado {
     hasCondicionalComplexo: boolean;
     hasOperadores: boolean;
     resultadoLogica: number;
+    resultadoControleFluxo: number;
+    resultadoRepresentacao: number;
+    resultadoAbstracao: number;
 }

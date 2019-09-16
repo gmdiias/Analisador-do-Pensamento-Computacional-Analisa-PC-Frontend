@@ -5,5 +5,27 @@ export class Linguagem {
   version = 0;
   dataCriacao = 0;
   nome = '';
-  condicional: ExpressaoRegular[] = [];
+
+  // Avaliacao Logica
+  condicional = '';
+  condicionalComplexo = '';
+  operadorLogico = '';
+
+  // Controle de Fluxo
+  sequencial = '';
+  loop = '';
+  loopComplexo = '';
+
+  // Representacao de Dados
+  valorFixo = '';
+  variavel = '';
+  lista = '';
+
+  // Abstração e Decomposição
+  sequenciais = '';
+  multiFuncoes = '';
+  modulos = '';
+
+
+
 }

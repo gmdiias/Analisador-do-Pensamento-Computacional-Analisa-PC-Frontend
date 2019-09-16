@@ -1,25 +1,49 @@
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-          <mat-icon class="mr-1">label</mat-icon>
-        Resultado da Avaliação
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon class="mr-1">label</mat-icon>
+      Resultado da Avaliação
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
 
-      Nome: {{entity.nome}}
+    <div class="row">
 
-      Pensamento Lógico: {{entity.avaliacao.resultadoLogica}}
+      <div class="col-12 mb-3">
+    Nome: {{entity.nome}}
+  </div>
 
-    </mat-card-content>
-    <mat-card-actions>
-      <button
-        mat-raised-button
-        color="primary"
-        class="mt-3"
-        (click)="onVoltarClick()"
-      >
-        Voltar
-      </button>
-    </mat-card-actions>
-  </mat-card>
+  <div class="col-6">
+    Pensamento Lógico: {{entity.avaliacao.resultadoLogica}}
+
+    <mat-progress-spinner mode="determinate" [value]="(entity.avaliacao.resultadoLogica*100)/3"></mat-progress-spinner>
+
+  </div>
+
+  <div class="col-6">
+    Controle de Fluxo: {{entity.avaliacao.resultadoControleFluxo}}
+
+    <mat-progress-spinner mode="determinate" [value]="(entity.avaliacao.resultadoControleFluxo*100)/3">
+    </mat-progress-spinner>
+  </div>
+  <div class="col-6">
+    Representação: {{entity.avaliacao.resultadoRepresentacao}}
+
+    <mat-progress-spinner mode="determinate" [value]="(entity.avaliacao.resultadoRepresentacao*100)/3">
+    </mat-progress-spinner>
+
+  </div>
+  <div class="col-6">
+    Abstração: {{entity.avaliacao.resultadoAbstracao}}
+
+    <mat-progress-spinner mode="determinate" [value]="(entity.avaliacao.resultadoAbstracao*100)/3">
+    </mat-progress-spinner>
+  </div>
+  </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" class="mt-3" (click)="onVoltarClick()">
+      Voltar
+    </button>
+  </mat-card-actions>
+</mat-card>
