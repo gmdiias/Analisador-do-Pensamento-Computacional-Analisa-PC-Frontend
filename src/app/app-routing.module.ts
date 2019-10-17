@@ -6,11 +6,16 @@ import { LinguagemEditComponent } from './linguagem/linguagem-edit/linguagem-edi
 import { CasoTesteListComponent } from './caso-teste/caso-teste-list/caso-teste-list.component';
 import { CasoTesteEditComponent } from './caso-teste/caso-teste-edit/caso-teste-edit.component';
 import { CasoTesteResultComponent } from './caso-teste/caso-teste-result/caso-teste-result.component';
+import { AlunoEditComponent } from './aluno/aluno-edit/aluno-edit.component';
+import { AlunoListComponent } from './aluno/aluno-list/aluno-list.component';
 
 const routes: Routes = [
   { path: 'linguagem/list', component: LinguagemListComponent },
   { path: 'linguagem/edit', redirectTo: 'linguagem/edit/new', pathMatch: 'full' },
   { path: 'linguagem/edit/:id', component: LinguagemEditComponent },
+  { path: 'aluno/list', component: AlunoListComponent },
+  { path: 'aluno/edit', redirectTo: 'aluno/edit/new', pathMatch: 'full' },
+  { path: 'aluno/edit/:id', component: AlunoEditComponent },
   { path: 'casoteste/list', component: CasoTesteListComponent },
   { path: 'casoteste/edit', redirectTo: 'casoteste/edit/new', pathMatch: 'full' },
   { path: 'casoteste/edit/:id', component: CasoTesteEditComponent },

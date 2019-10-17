@@ -12,6 +12,8 @@ import { LinguagemModule } from './linguagem/linguagem.module';
 import { CasoTesteModule } from './caso-teste/caso-teste.module';
 import { LinguagemService } from './linguagem/linguagem.service';
 import { CasoTesteService } from './caso-teste/caso-teste.service';
+import { AlunoModule } from './aluno/aluno.module';
+import { AlunoService } from './aluno/aluno.service';
 
 
 @NgModule({
@@ -27,9 +29,10 @@ import { CasoTesteService } from './caso-teste/caso-teste.service';
     LinguagemModule,
     MatIconModule,
     CasoTesteModule,
-    DashboardModule
+    DashboardModule,
+    AlunoModule
   ],
-  providers: [LinguagemService, CasoTesteService],
+  providers: [LinguagemService, CasoTesteService, AlunoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
