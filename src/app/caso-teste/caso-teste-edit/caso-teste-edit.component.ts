@@ -7,12 +7,14 @@ import {
 } from "@angular/forms";
 import { MatSnackBar } from "@angular/material";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Subscription, Observable, of } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { Subscription, Observable, of, BehaviorSubject } from "rxjs";
+import { switchMap, debounceTime, map } from "rxjs/operators";
 import { CasoTeste } from '../caso-teste.model';
 import { CasoTesteService } from '../caso-teste.service';
 import { LinguagemService } from 'src/app/linguagem/linguagem.service';
 import { Linguagem } from 'src/app/linguagem/linguagem.model';
+import { Aluno } from 'src/app/aluno/aluno.model';
+import { AlunoService } from 'src/app/aluno/aluno.service';
 
 
 export function linguagemValidator(c: AbstractControl): ValidationErrors | null {
@@ -34,18 +36,33 @@ export class CasoTesteEditComponent implements OnInit {
   entityForm: FormGroup;
   isNew = true;
 
+  aluno$ = new BehaviorSubject('');
+  alunoList: Observable<Aluno[]> = this.aluno$.asObservable().pipe(debounceTime(500), switchMap(dado => {
+    if (dado.length > 1) {
+      return this.alunoService.autocomplete(dado);
+    }
+    return of([]);
+  }));
+
+  linguagem$ = new BehaviorSubject('');
+  linguagemList: Observable<Linguagem[]> = this.linguagem$.asObservable().pipe(debounceTime(500), switchMap(dado => {
+    if (dado.length > 1) {
+      return this.linguagemService.autocomplete(dado);
+    }
+    return of([]);
+  }));
+
   constructor(
     private router: Router,
     fb: FormBuilder,
     private casoTesteService: CasoTesteService,
     private snackBar: MatSnackBar,
     protected activatedRoute: ActivatedRoute,
-    private linguagemService: LinguagemService
+    private linguagemService: LinguagemService,
+    private alunoService: AlunoService
   ) {
     this.entityForm = fb.group(new CasoTeste());
   }
-
-  linguagens: Observable<Linguagem[]> = of([]);
 
   private paramSub: Subscription;
   ngOnInit() {
@@ -100,18 +117,10 @@ export class CasoTesteEditComponent implements OnInit {
     });
   }
 
-  onChange(valor: any) {
-    this.linguagens = this._filter(valor);
-  }
-
-  private _filter(value: string): Observable<Linguagem[]> {
-    if (value && value.length < 18) {
-      return this.linguagemService.autocomplete(value);
+  formatLinguagemName(linguagem: Linguagem): string {
+    if (linguagem) {
+      return linguagem.nome;
     }
-    return this.linguagens;
-  }
-
-  formatFornecedorName(fornecedor: Linguagem): string {
-    return fornecedor.nome;
+    return '';
   }
 }
