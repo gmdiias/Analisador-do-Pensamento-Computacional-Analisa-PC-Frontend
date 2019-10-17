@@ -37,10 +37,20 @@ export class CasoTesteEditComponent implements OnInit {
   isNew = true;
 
   aluno$ = new BehaviorSubject('');
-  alunoList: Observable<Aluno[]> = this.aluno$.asObservable().pipe(debounceTime(500), switchMap(dado => this.alunoService.autocomplete(dado)));
+  alunoList: Observable<Aluno[]> = this.aluno$.asObservable().pipe(debounceTime(500), switchMap(dado => {
+    if (dado.length > 1) {
+      return this.alunoService.autocomplete(dado);
+    }
+    return of([]);
+  }));
 
   linguagem$ = new BehaviorSubject('');
-  linguagemList: Observable<Linguagem[]> = this.aluno$.asObservable().pipe(debounceTime(500), switchMap(dado => this.linguagemService.autocomplete(dado)));
+  linguagemList: Observable<Linguagem[]> = this.linguagem$.asObservable().pipe(debounceTime(500), switchMap(dado => {
+    if (dado.length > 1) {
+      return this.linguagemService.autocomplete(dado);
+    }
+    return of([]);
+  }));
 
   constructor(
     private router: Router,
@@ -107,7 +117,10 @@ export class CasoTesteEditComponent implements OnInit {
     });
   }
 
-  formatFornecedorName(fornecedor: Linguagem): string {
-    return fornecedor.nome;
+  formatLinguagemName(linguagem: Linguagem): string {
+    if (linguagem) {
+      return linguagem.nome;
+    }
+    return '';
   }
 }

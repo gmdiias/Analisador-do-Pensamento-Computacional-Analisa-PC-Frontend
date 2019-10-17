@@ -20,9 +20,9 @@
         </mat-form-field>
 
         <mat-form-field class="col-6">
-          <input #fornecedorField matInput placeholder="Selecione a Linguagem" [matAutocomplete]="auto"
+          <input #fornecedorField matInput placeholder="Selecione a Linguagem" [matAutocomplete]="autoLinguagem"
             formControlName="linguagem" (input)="linguagem$.next($event.target.value)" required />
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="formatFornecedorName">
+          <mat-autocomplete #autoLinguagem="matAutocomplete" [displayWith]="formatLinguagemName">
             <mat-option *ngFor="let l of (linguagemList | async)" [value]="l">
               {{ l.nome }}
             </mat-option>
@@ -32,9 +32,9 @@
         </mat-form-field>
 
         <mat-form-field class="col-6">
-            <input #fornecedorField matInput placeholder="Selecione o Aluno" [matAutocomplete]="auto"
+            <input #fornecedorField matInput placeholder="Selecione o Aluno" [matAutocomplete]="autoAluno"
               formControlName="aluno" (input)="aluno$.next($event.target.value)" required />
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="formatFornecedorName">
+            <mat-autocomplete #autoAluno="matAutocomplete" [displayWith]="formatLinguagemName">
               <mat-option *ngFor="let l of (alunoList | async)" [value]="l">
                 {{ l.nome }}
               </mat-option>
