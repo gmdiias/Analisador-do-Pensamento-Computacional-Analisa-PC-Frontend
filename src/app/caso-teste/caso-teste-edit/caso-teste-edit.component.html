@@ -14,7 +14,7 @@
         </mat-form-field>
 
         <mat-form-field class="col-12">
-          <textarea matInput placeholder="Código" formControlName="codigo" required></textarea>
+          <textarea matInput placeholder="Código" formControlName="codigo" rows="20" required></textarea>
           <mat-error *ngIf="entityForm.controls['codigo'].hasError('required')">* Digite o código a ser analisado no
             campo de texto acima.</mat-error>
         </mat-form-field>

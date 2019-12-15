@@ -18,4 +18,6 @@ export class Resultado {
     hasMultiFuncoes: boolean;
     hasModulos: boolean;
     resultadoAbstracao: number;
+
+    resultadoGeral: number;
 }

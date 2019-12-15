@@ -7,8 +7,20 @@
   </mat-card-header>
   <mat-card-content>
 
-    <div class="col-12">
-      <strong>Nome:</strong> {{entity.nome}}
+    <div class="row col-12">
+      <div class="col-8">
+        <strong>Nome:</strong> {{entity.nome}}<br>
+        <strong>Aluno:</strong> {{entity.aluno.nome}}<br>
+        <strong>Identificador:</strong> {{entity.aluno.registro}}
+      </div>
+
+      <div class="col-4">
+        <strong>Pontuação Total:</strong> {{entity.avaliacao.resultadoGeral}}/12<br>
+        <strong>Classificação: </strong>
+        <span *ngIf="entity.avaliacao.resultadoGeral <= 4">Básico</span>
+        <span *ngIf="entity.avaliacao.resultadoGeral > 4 && entity.avaliacao.resultadoGeral < 9">Intermediario</span>
+        <span *ngIf="entity.avaliacao.resultadoGeral >= 9">Avançado</span>
+      </div>
     </div>
 
     <mat-card class="col-12 mt-3 mat-elevation-z2">

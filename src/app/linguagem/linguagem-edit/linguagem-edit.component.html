@@ -14,7 +14,7 @@
         </mat-form-field>
       </div>
 
-      <mat-expansion-panel>
+      <mat-expansion-panel class="mat-elevation-z7">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Lógica
@@ -47,7 +47,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-              Controle de Fluxo
+            Controle de Fluxo
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-card-content>
@@ -78,7 +78,7 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-              Representação de Dados
+            Representação de Dados
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-card-content>
@@ -109,28 +109,28 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-              Abstração e Decomposição
+            Abstração e Decomposição
           </mat-panel-title>
         </mat-expansion-panel-header>
         <mat-card-content>
 
           <mat-form-field class="col-12">
-            <input matInput placeholder="Condicional" formControlName="sequenciais" />
+            <input matInput placeholder="Instruções Sequenciais" formControlName="sequenciais" />
             <mat-error *ngIf="entityForm.controls['sequenciais'].hasError('required')">* Informe a expressão para a
-              analise de operador condicional.</mat-error>
+              analise de instruções sequenciais.</mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-12">
-            <input matInput placeholder="Condicional Complexo" formControlName="multiFuncoes" />
+            <input matInput placeholder="Demais Funções" formControlName="multiFuncoes" />
             <mat-error *ngIf="entityForm.controls['multiFuncoes'].hasError('required')">* Informe a expressão
               para a
-              analise de operador condicional.</mat-error>
+              analise de demais funções.</mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-12">
-            <input matInput placeholder="Operadores Lógicos" formControlName="modulos" />
+            <input matInput placeholder="Módulos Externos" formControlName="modulos" />
             <mat-error *ngIf="entityForm.controls['modulos'].hasError('required')">* Informe a expressão para a
-              analise de operador condicional.</mat-error>
+              analise de módulos externos.</mat-error>
           </mat-form-field>
 
         </mat-card-content>
