@@ -12,6 +12,9 @@
           <input matInput placeholder="Nome" formControlName="nome" required />
           <mat-error *ngIf="entityForm.controls['nome'].hasError('required')">* Informe o Nome.</mat-error>
         </mat-form-field>
+        <div class="col-6">
+          <a href="https://regexr.com/" target="_blank"><mat-icon class="mt-3" matTooltip="Precisa de ajuda com Expressões Regulares? Clique aqui">help_outline</mat-icon></a>
+        </div>
       </div>
 
       <mat-expansion-panel class="mat-elevation-z7">
@@ -142,7 +145,7 @@
         Voltar
       </button>
       <button mat-raised-button color="primary" [disabled]="!entityForm.valid" (click)="onSubmit()" class="mt-3">
-        {{ isNew ? "Inserir" : "Salvar" }}
+        {{ isNew ? "Adicionar" : "Salvar" }}
       </button>
     </mat-card-actions>
   </mat-card>

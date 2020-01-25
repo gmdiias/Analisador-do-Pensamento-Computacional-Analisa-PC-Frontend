@@ -15,11 +15,15 @@
       </div>
 
       <div class="col-4">
-        <strong>Pontuação Total:</strong> {{entity.avaliacao.resultadoGeral}}/12<br>
-        <strong>Classificação: </strong>
-        <span *ngIf="entity.avaliacao.resultadoGeral <= 4">Básico</span>
-        <span *ngIf="entity.avaliacao.resultadoGeral > 4 && entity.avaliacao.resultadoGeral < 9">Intermediario</span>
-        <span *ngIf="entity.avaliacao.resultadoGeral >= 9">Avançado</span>
+        <mat-card class="mat-elevation-z2">
+            <h5>
+              <strong>Pontuação Total:</strong> {{entity.avaliacao.resultadoGeral}}/12<br>
+              <strong>Classificação: </strong>
+              <span *ngIf="entity.avaliacao.resultadoGeral <= 4">Básico</span>
+              <span *ngIf="entity.avaliacao.resultadoGeral > 4 && entity.avaliacao.resultadoGeral < 9">Intermediario</span>
+              <span *ngIf="entity.avaliacao.resultadoGeral >= 9">Avançado</span>
+            </h5>
+          </mat-card>
       </div>
     </div>
 
@@ -145,7 +149,7 @@
           <mat-error *ngIf="!entity.avaliacao.hasValoresFixos">* Não foram encontrados valores.<br></mat-error>
           <mat-error *ngIf="!entity.avaliacao.hasVariaveis">* Não foram encontradas variaveis.
             <br></mat-error>
-          <mat-error *ngIf="!entity.avaliacao.hasListas">* Não foram encontrados estruturas.<br></mat-error>
+          <mat-error *ngIf="!entity.avaliacao.hasListas">* Não foram encontradas estruturas.<br></mat-error>
         </div>
 
         <div class="col-3">
@@ -186,7 +190,7 @@
 
         <div class="col-9">
           <mat-error *ngIf="!entity.avaliacao.hasSequenciais">* Não foram encontradas instruções.<br></mat-error>
-          <mat-error *ngIf="!entity.avaliacao.hasMultiFuncoes">* Não foram encontrados outras funções.
+          <mat-error *ngIf="!entity.avaliacao.hasMultiFuncoes">* Não foram encontradas outras funções.
             <br></mat-error>
           <mat-error *ngIf="!entity.avaliacao.hasModulos">* Não foram encontrados módulos externos.<br></mat-error>
         </div>

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatPaginatorModule, MatExpansionModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, MatIconModule, MatPaginatorModule, MatExpansionModule, MatTooltipModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LinguagemListComponent } from './linguagem-list/linguagem-list.component';
 import { LinguagemEditComponent } from './linguagem-edit/linguagem-edit.component';
@@ -21,7 +21,8 @@ import { LinguagemEditComponent } from './linguagem-edit/linguagem-edit.componen
     MatSnackBarModule,
     MatExpansionModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule,
   ],
   exports: [
     LinguagemListComponent,

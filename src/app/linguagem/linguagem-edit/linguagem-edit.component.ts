@@ -58,10 +58,10 @@ export class LinguagemEditComponent implements OnInit {
     this.entityForm.disable();
 
     this.linguagemService.saveOrCreate(this.isNew, this.entityForm.value).then(_ => {
-      this.openSnackBar('País salvo com sucesso!', 'Ok');
+      this.openSnackBar('Linguagem salva com sucesso!', 'Ok');
       this.router.navigate(['linguagem/list']);
     }).catch(_ => {
-      this.openSnackBar('Ocorreu um erro ao salvar o País!', 'Erro');
+      this.openSnackBar('Ocorreu um erro ao salvar a Linguagem!', 'Erro');
       this.entityForm.enable();
     });
   }
